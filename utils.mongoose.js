@@ -1,28 +1,26 @@
 const mongoose = global.mongoose;
 
-async function generateId() {
+async function generateId(counterName, prefix) {
 	try {
-		let data = await this.model.updateOne({ "_id": this.counterName }, { "$inc": { "counter": 1 } }, null).exec();
+		let data = await this.model.updateOne({ "_id": counterName }, { "$inc": { "counter": 1 } }, null).exec();
 		if (data.modifiedCount == 0) {
 			logger.error('Failed to increment counter');
 			throw new Error('Failed to increment counter');
 		}
-		data = await this.model.findOne({ "_id": this.counterName });
-		return `${this.prefix}${data.counter}`;
+		data = await this.model.findOne({ "_id": counterName });
+		return `${prefix}${data.counter}`;
 	} catch (err) {
 		logger.error(err);
 		throw err;
 	}
 }
 
-function mongooseUtils(counterName, prefix, logger) {
+function mongooseUtils(logger) {
 	this.schema = mongoose.Schema({
 		_id: String,
 		counter: Number
 	});
 	this.model = mongoose.model('counter', this.schema, null);
-	this.counterName = counterName;
-	this.prefix = prefix;
 	this.logger = logger;
 
 	this.generateId = generateId.bind(this);
@@ -32,8 +30,6 @@ mongooseUtils.prototype = {
 	constructor: mongooseUtils,
 	schema: null,
 	model: null,
-	counterName: null,
-	prefix: null,
 	logger: null
 };
 
