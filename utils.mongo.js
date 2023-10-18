@@ -7,8 +7,8 @@ async function generateId(collection, counterName, prefix, logger) {
 			logger.error('Failed to increment counter');
 			throw new Error('Failed to increment counter');
 		}
-		data = await collection.findOne({ "_id": counterName }, { "next": 1 });
-		return `${prefix}${data.next}`;
+		data = await collection.findOne({ "_id": counterName });
+		return `${prefix}${data.counter}`;
 	} catch (err) {
 		logger.error(err);
 		throw err;
