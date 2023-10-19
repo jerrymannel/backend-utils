@@ -1,5 +1,5 @@
 {
-  "name": "backend-utils",
+  "name": "@jerrymannelr/backend-utils",
   "version": "0.0.1",
   "description": "backend-utils",
   "main": "app.js",
