@@ -1,5 +1,5 @@
 {
-  "name": "@jerrymannelr/backend-utils",
+  "name": "@jerrymannel/backend-utils",
   "version": "0.0.1",
   "description": "backend-utils",
   "main": "app.js",
@@ -12,5 +12,6 @@
   "dependencies": {
     "mongodb": "^6.1.0",
     "mongoose": "^7.6.3"
-  }
+  },
+  "devDependencies": {}
 }
