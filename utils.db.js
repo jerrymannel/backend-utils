@@ -1,8 +1,8 @@
-function generateMetaData(res) {
+function generateMetaData(req) {
 	return {
 		"lastModified": new Date(),
 		"version": "1.0.0",
-		"modifiedBy": res.user ? res.user.username : null,
+		"modifiedBy": req.headers["user"] ? req.headers["user"] : null,
 	}
 }
 
