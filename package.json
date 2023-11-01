@@ -10,8 +10,9 @@
   "author": "",
   "license": "MIT",
   "dependencies": {
+    "@aws-sdk/client-s3": "^3.440.0",
+    "@aws-sdk/credential-providers": "^3.438.0",
     "mongodb": "^6.1.0",
     "mongoose": "^7.6.3"
-  },
-  "devDependencies": {}
+  }
 }
